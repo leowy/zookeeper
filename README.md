@@ -21,8 +21,12 @@ zookeeper源码分析
 		
 		错误2：org.apache.zookeeper.Version报错，org.apache.zookeeper.version.Info这个接口找不到。
 		修改方法：这个接口可以通过运行org.apache.zookeeper.version.util.VerGen的Main方法来生成这个文件，方法需要传递3个参数
+		
+		错误3：Access restriction: The type 'SensitivityWatchEventModifier' is not API (restriction on required library 'C:\Program Files\Java\jdk1.8.0_171\jre\lib\rt.jar')
+		修改方法：build path -> configure build path -> Libraries -> JRE System Library -> Access rules -> Edit -> Add (Accessible  */**)
 
 ```java(3个参数写死)
+错误2 ->
 public static void main(String[] args2) {
         String[] args =new String[]{"1.0.0"," ",""};
         System.out.println("args's length:"+args.length);
@@ -50,13 +54,14 @@ public static void main(String[] args2) {
     }
 ```
 
+
 ### 项目运行
 
 `zkServer`入口方法为`org.apache.zookeeper.server.ZooKeeperServerMain` 
    
 复制`conf/zoo.sample.cfg`为 `/conf/zoo.cfg`   
 
-复制`conf/log4j.properties`到`zookeeper-server/src/main/`目录下
+复制`conf/log4j.properties`到`zookeeper-server/src/main/java`目录下
   
 右键`Run As` -> `Run Configurations` -> `Arguments` -> `Program arguments` -> 添加 `conf/zoo.cfg`
 
